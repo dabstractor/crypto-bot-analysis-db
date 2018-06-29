@@ -64,18 +64,18 @@ CREATE TABLE IF NOT EXISTS `backtests`.`runs` (
   CONSTRAINT `fk_runs_1`
     FOREIGN KEY (`strategy_id`)
     REFERENCES `backtests`.`strategies` (`strategy_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_runs_2`
     FOREIGN KEY (`asset_id`)
     REFERENCES `backtests`.`assets` (`asset_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_runs_3`
     FOREIGN KEY (`currency_id`)
     REFERENCES `backtests`.`currencies` (`currency_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -105,13 +105,13 @@ CREATE TABLE IF NOT EXISTS `backtests`.`trades` (
   CONSTRAINT `fk_trades_1`
     FOREIGN KEY (`run_id`)
     REFERENCES `backtests`.`runs` (`run_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_trades_2`
     FOREIGN KEY (`type_id`)
     REFERENCES `backtests`.`trade_types` (`trade_type_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -127,13 +127,13 @@ CREATE TABLE IF NOT EXISTS `backtests`.`assets_currencies` (
   CONSTRAINT `fk_assets_currencies_1`
     FOREIGN KEY (`currency_id`)
     REFERENCES `backtests`.`currencies` (`currency_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_assets_currencies_2`
     FOREIGN KEY (`asset_id`)
     REFERENCES `backtests`.`assets` (`asset_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -150,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `backtests`.`run_params` (
   CONSTRAINT `fk_run_params_1`
     FOREIGN KEY (`run_id`)
     REFERENCES `backtests`.`runs` (`run_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
